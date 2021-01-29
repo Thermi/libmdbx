@@ -157,11 +157,13 @@ reformat:
 
 MAN_SRCDIR := src/man1/
 ALLOY_DEPS := $(wildcard src/*)
-MDBX_GIT_VERSION = $(shell set -o pipefail; git describe --tags | sed -n 's|^v*\([0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}\)\(.*\)|\1|p' || echo 'Please fetch tags and/or use non-obsolete git version')
-MDBX_GIT_REVISION = $(shell set -o pipefail; git rev-list --count HEAD ^`git tag --sort=-version:refname | sed -n '/^\(v[0-9]\+\.[0-9]\+\.[0-9]\+\)*/p;q' || echo 'failed_git_tag_with_sort'` || echo 'Please use non-obsolete git version')
-MDBX_GIT_TIMESTAMP = $(shell git show --no-patch --format=%cI HEAD || echo 'Please install latest get version')
-MDBX_GIT_DESCRIBE = $(shell git describe --tags --long --dirty=-dirty || echo 'Please fetch tags and/or install non-obsolete git version')
-MDBX_VERSION_SUFFIX = $(shell set -o pipefail; echo -n '$(MDBX_GIT_DESCRIBE)' | tr -c -s '[a-zA-Z0-9]' _)
+MDBX_GIT_VERSION := $(shell set -o pipefail; git describe --tags | sed -n 's|^v*\([0-9]\{1,\}\.[0-9]\{1,\}\.[0-9]\{1,\}\)\(.*\)|\1|p' || echo 'Please fetch tags and/or use non-obsolete git version')
+MDBX_GIT_REVISION := $(shell set -o pipefail; git rev-list --count HEAD ^`git tag --sort=-version:refname | sed -n '/^\(v[0-9]\+\.[0-9]\+\.[0-9]\+\)*/p;q' || echo 'failed_git_tag_with_sort'` || echo 'Please use non-obsolete git version')
+MDBX_GIT_TIMESTAMP := $(shell git show --no-patch --format=%cI HEAD || echo 'Please install latest get version')
+MDBX_GIT_DESCRIBE := $(shell git describe --tags --long --dirty=-dirty || echo 'Please fetch tags and/or install non-obsolete git version')
+MDBX_GIT_TREE := $(shell git show --no-patch --format=%T HEAD || echo 'Please install latest get version')
+MDBX_GIT_COMMIT := $(shell git show --no-patch --format=%H HEAD || echo 'Please install latest get version')
+MDBX_VERSION_SUFFIX := $(shell set -o pipefail; echo -n '$(MDBX_GIT_DESCRIBE)' | tr -c -s '[a-zA-Z0-9]' _)
 MDBX_BUILD_SOURCERY = $(shell set -o pipefail; $(MAKE) CXXSTD= -s src/version.c && (openssl dgst -r -sha256 src/version.c || sha256sum src/version.c || shasum -a 256 src/version.c) 2>/dev/null | cut -d ' ' -f 1 || echo 'Please install openssl or sha256sum or shasum')_$(MDBX_VERSION_SUFFIX)
 MDBX_DIST_DIR = libmdbx-$(MDBX_VERSION_SUFFIX)
 
@@ -237,8 +239,8 @@ git_DIR := $(shell if [ -d .git ]; then echo .git; elif [ -s .git -a -f .git ]; 
 src/version.c: src/version.c.in $(lastword $(MAKEFILE_LIST)) $(git_DIR)/HEAD $(git_DIR)/index $(git_DIR)/refs/tags
 	sed \
 		-e "s|@MDBX_GIT_TIMESTAMP@|$(MDBX_GIT_TIMESTAMP)|" \
-		-e "s|@MDBX_GIT_TREE@|$(shell git show --no-patch --format=%T HEAD || echo 'Please install latest get version')|" \
-		-e "s|@MDBX_GIT_COMMIT@|$(shell git show --no-patch --format=%H HEAD || echo 'Please install latest get version')|" \
+		-e "s|@MDBX_GIT_TREE@|$(MDBX_GIT_TREE)|" \
+		-e "s|@MDBX_GIT_COMMIT@|$(MDBX_GIT_COMMIT)|" \
 		-e "s|@MDBX_GIT_DESCRIBE@|$(MDBX_GIT_DESCRIBE)|" \
 		-e "s|\$${MDBX_VERSION_MAJOR}|$(shell echo '$(MDBX_GIT_VERSION)' | cut -d . -f 1)|" \
 		-e "s|\$${MDBX_VERSION_MINOR}|$(shell echo '$(MDBX_GIT_VERSION)' | cut -d . -f 2)|" \
@@ -263,8 +265,8 @@ mdbx-static.o: src/config.h src/version.c src/alloy.c $(ALLOY_DEPS) $(lastword $
 docs/Doxyfile: docs/Doxyfile.in src/version.c
 	sed \
 		-e "s|@MDBX_GIT_TIMESTAMP@|$(MDBX_GIT_TIMESTAMP)|" \
-		-e "s|@MDBX_GIT_TREE@|$(shell git show --no-patch --format=%T HEAD || echo 'Please install latest get version')|" \
-		-e "s|@MDBX_GIT_COMMIT@|$(shell git show --no-patch --format=%H HEAD || echo 'Please install latest get version')|" \
+		-e "s|@MDBX_GIT_TREE@|$(MDBX_GIT_TREE)|" \
+		-e "s|@MDBX_GIT_COMMIT@|$(MDBX_GIT_COMMIT)|" \
 		-e "s|@MDBX_GIT_DESCRIBE@|$(MDBX_GIT_DESCRIBE)|" \
 		-e "s|\$${MDBX_VERSION_MAJOR}|$(shell echo '$(MDBX_GIT_VERSION)' | cut -d . -f 1)|" \
 		-e "s|\$${MDBX_VERSION_MINOR}|$(shell echo '$(MDBX_GIT_VERSION)' | cut -d . -f 2)|" \
