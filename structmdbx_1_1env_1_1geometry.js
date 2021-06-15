@@ -1,0 +1,27 @@
+var structmdbx_1_1env_1_1geometry =
+[
+    [ "size", "structmdbx_1_1env_1_1geometry_1_1size.html", "structmdbx_1_1env_1_1geometry_1_1size" ],
+    [ "default_value", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea86ec02df8a1d61cb71be19c403588d67", null ],
+    [ "minimal_value", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea1f7d7c41623883f296e17122ad5a1c79", null ],
+    [ "maximal_value", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea82b85a92121c5e9238e29f50d66b08d5", null ],
+    [ "kB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeeabae52024d7358ede3cc19b4f9a812826", null ],
+    [ "MB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea4e4833605c42d86491cdf2aaf0bed053", null ],
+    [ "GB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea0ee91a482f851c2894c053ebfb523f28", null ],
+    [ "TB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeeab27a85ba20626d5a353184a75525ae72", null ],
+    [ "PB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea6657d9be538d290ed9e6e2f697c4706d", null ],
+    [ "EB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea9030d9839b65a08b02877374e43c5678", null ],
+    [ "KiB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeead307ed31483885f2620a7be907c44302", null ],
+    [ "MiB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeeac662127e224949218f3eef2c0d038465", null ],
+    [ "GiB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea7c27a434717587ddb2d2b7fd3c5642b2", null ],
+    [ "TiB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeeaa935d58f2cefb61432ac52f19ebfb873", null ],
+    [ "PiB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeeabb0ff2729576f962ed62664d89c0a7d0", null ],
+    [ "EiB", "structmdbx_1_1env_1_1geometry.html#ad756664067a53c42115b5bfcbd43beeea7d99f03b14c973413607e8465a4e62fa", null ],
+    [ "make_dynamic", "structmdbx_1_1env_1_1geometry.html#ac0c48341f24fffd1e8024a4c544a9ce4", null ],
+    [ "make_fixed", "structmdbx_1_1env_1_1geometry.html#aedc1bfaf2d0a777135544b54bc74204a", null ],
+    [ "growth_step", "structmdbx_1_1env_1_1geometry.html#a7f95548fe4c4b4149884ac9150dc8d73", null ],
+    [ "pagesize", "structmdbx_1_1env_1_1geometry.html#a45048bf2de9120d01dae2151c060d459", null ],
+    [ "shrink_threshold", "structmdbx_1_1env_1_1geometry.html#ab233e3401b58b5d88362ce9457870d54", null ],
+    [ "size_lower", "structmdbx_1_1env_1_1geometry.html#abfd123ee2277df77373cc6d59ae0472c", null ],
+    [ "size_now", "structmdbx_1_1env_1_1geometry.html#ab204b6da9885831ca0314a2f8c2ae556", null ],
+    [ "size_upper", "structmdbx_1_1env_1_1geometry.html#a4368dc988eefc0e1a49174afe4598222", null ]
+];
